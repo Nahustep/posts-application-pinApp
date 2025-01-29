@@ -18,12 +18,14 @@ class _CommentApiServices implements CommentApiServices {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<CommentModel>> getPosts({required double postId}) async {
+  Future<HttpResponse<List<CommentModel>>> getComments({
+    required double postId,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'postId': postId};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<CommentModel>>(
+    final _options = _setStreamType<HttpResponse<List<CommentModel>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -45,7 +47,8 @@ class _CommentApiServices implements CommentApiServices {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

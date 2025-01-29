@@ -9,6 +9,6 @@ sealed class CommentApiServices {
   factory CommentApiServices(Dio dio) = _CommentApiServices;
 
   @GET('/comments')
-  Future<List<CommentModel>> getPosts(
+  Future<HttpResponse<List<CommentModel>>> getComments(
       {@Query("postId") required double postId});
 }

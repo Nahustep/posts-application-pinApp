@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:post_app/injection_container.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import 'core/routes/routes.dart';
 
-void main() {
+Future<void> main() async {
+  await initializeDependencies();
   runApp(const MyApp());
 }
 
@@ -12,17 +15,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Posts',
-      // builder: (context, child) => ResponsiveWrapper.builder(
-      //   child,
-      //   defaultScale: true,
-      //   breakpoints: [
-      //     const ResponsiveBreakpoint.resize(480, name: MOBILE),
-      //     const ResponsiveBreakpoint.autoScale(800, name: TABLET),
-      //     const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
-      //   ],
-      // ),
+      builder: (context, child) => ResponsiveBreakpoints.builder(
+        child: child!,
+        breakpoints: [
+          const Breakpoint(start: 0, end: 450, name: MOBILE),
+          const Breakpoint(start: 451, end: 800, name: TABLET),
+          const Breakpoint(start: 801, end: 1455, name: "DESKTOPSMALL"),
+          const Breakpoint(start: 1455, end: double.infinity, name: DESKTOP),
+        ],
+      ),
       theme: ThemeData(
-        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       routerConfig: router,

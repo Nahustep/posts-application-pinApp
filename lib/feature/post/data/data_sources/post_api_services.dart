@@ -9,5 +9,5 @@ sealed class PostApiServices {
   factory PostApiServices(Dio dio) = _PostApiServices;
 
   @GET('/posts')
-  Future<List<PostModel>> getPosts();
+  Future<HttpResponse<List<PostModel>>> getPosts();
 }

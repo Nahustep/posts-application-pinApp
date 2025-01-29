@@ -9,7 +9,7 @@ sealed class PostDetailApiServices {
   factory PostDetailApiServices(Dio dio) = _PostDetailApiServices;
 
   @GET('/posts/{id}')
-  Future<CommentModel> getPostById({
+  Future<HttpResponse<CommentModel>> getPostById({
     @Path() required String id,
   });
 }

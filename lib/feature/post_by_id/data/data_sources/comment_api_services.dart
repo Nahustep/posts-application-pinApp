@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../models/comment_model.dart';
-part 'comment_data_source.g.dart';
+part 'comment_api_services.g.dart';
 
 @RestApi()
 sealed class CommentApiServices {

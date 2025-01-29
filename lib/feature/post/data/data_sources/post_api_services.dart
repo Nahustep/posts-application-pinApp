@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../models/post_model.dart';
-part 'post_data_source.g.dart';
+part 'post_api_services.g.dart';
 
 @RestApi()
 sealed class PostApiServices {

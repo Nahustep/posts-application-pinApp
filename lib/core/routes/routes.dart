@@ -5,7 +5,7 @@ import '../../feature/post/presentation/page/post_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 const home = '/posts';
-const post_detail = '/posts/{id}';
+const postDetail = '/posts/{id}';
 final router = GoRouter(
   initialLocation: home, // Ruta inicial
   navigatorKey: _rootNavigatorKey,

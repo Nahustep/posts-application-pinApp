@@ -19,7 +19,7 @@ class _CommentApiServices implements CommentApiServices {
 
   @override
   Future<HttpResponse<List<CommentModel>>> getComments({
-    required double postId,
+    required int postId,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'postId': postId};

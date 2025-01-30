@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:post_app/feature/post/data/data_sources/post_api_services.dart';
 import 'package:post_app/feature/post_by_id/domain/entities/comment_entity.dart';
 import '../../../../core/data_sources/local/post_api_services.dart';
 import '../../../../core/entities/post_entity.dart';
@@ -20,9 +19,23 @@ class PostDetailRepositoryImpl implements PostDetailRepository {
 
   @override
   Future<Either<DioException, List<CommentEntity>>> fetchCommentsByPostId(
-      {required int postId}) {
-    // TODO: implement fetchCommentsByPostId
-    throw UnimplementedError();
+      {required int postId}) async {
+    try {
+      final httpResponse = await commentApiServices.getComments(postId: postId);
+
+      if (httpResponse.response.statusCode == HttpStatus.ok) {
+        return right(httpResponse.data);
+      } else {
+        return left(DioException(
+          error: httpResponse.response.statusMessage,
+          response: httpResponse.response,
+          type: DioExceptionType.badResponse,
+          requestOptions: httpResponse.response.requestOptions,
+        ));
+      }
+    } on DioException catch (e) {
+      return left(e);
+    }
   }
 
   @override

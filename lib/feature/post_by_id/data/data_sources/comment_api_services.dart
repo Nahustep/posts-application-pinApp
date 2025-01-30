@@ -10,5 +10,5 @@ sealed class CommentApiServices {
 
   @GET('/comments')
   Future<HttpResponse<List<CommentModel>>> getComments(
-      {@Query("postId") required double postId});
+      {@Query("postId") required int postId});
 }

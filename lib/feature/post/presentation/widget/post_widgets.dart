@@ -26,7 +26,6 @@ class PostWidgets extends StatelessWidget {
 
     return CustomScrollView(
       slivers: [
-        // Title Row for "Posts" and "Favoritos"
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -55,22 +54,22 @@ class PostWidgets extends StatelessWidget {
           ),
         ),
         const SliverToBoxAdapter(child: SizedBox(height: 10)),
-
-        // GridView to display posts in a responsive grid
-        SliverGrid(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) {
-              return PostItemWidget(post: postsList[index]);
-            },
-            childCount: postsList.length,
-          ),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: crossAxisCount,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            childAspectRatio: aspectRatio,
-          ),
-        ),
+        SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            sliver: SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return PostItemWidget(post: postsList[index]);
+                },
+                childCount: postsList.length,
+              ),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: aspectRatio,
+              ),
+            )),
       ],
     );
   }

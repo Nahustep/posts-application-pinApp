@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:post_app/feature/post/domain/use_cases/is_saved_post_usecase.dart';
 import 'package:post_app/feature/post/domain/use_cases/remove_post_usecase.dart';
 import 'package:post_app/feature/post/domain/use_cases/save_post_usecase.dart';

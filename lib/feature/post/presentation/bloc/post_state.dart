@@ -13,8 +13,8 @@ class LoadingState extends PostState {
 
 class SuccessState extends PostState {
   final List<PostEntity> posts;
-
-  SuccessState(this.posts);
+  final bool favoriteList;
+  SuccessState(this.posts, this.favoriteList);
 }
 
 class ErrorState extends PostState {

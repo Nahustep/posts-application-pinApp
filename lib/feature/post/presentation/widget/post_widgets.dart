@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:post_app/feature/post/domain/entities/post_entity.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import '../bloc/post_cubit.dart';
 import 'post_item_widget.dart';
 
 class PostWidgets extends StatelessWidget {
   final List<PostEntity> postsList;
-
-  const PostWidgets({super.key, required this.postsList});
+  final bool favoriteList;
+  const PostWidgets(
+      {super.key, required this.postsList, required this.favoriteList});
 
   @override
   Widget build(BuildContext context) {
@@ -21,30 +24,51 @@ class PostWidgets extends StatelessWidget {
             : 1)
         : 1;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Text(
-            "Posts",
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+    return CustomScrollView(
+      slivers: [
+        // Title Row for "Posts" and "Favoritos"
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Spacer(),
+                Text(
+                  favoriteList ? "Mis Posts" : "Posts",
+                  style: const TextStyle(
+                      fontSize: 26, fontWeight: FontWeight.bold),
+                ),
+                Spacer(),
+                InkWell(
+                  onTap: () {
+                    context.read<PostCubit>().fetchSavedPosts();
+                  },
+                  child: Text(
+                    "Favoritos",
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-        const SizedBox(height: 10),
-        Expanded(
-          child: GridView.builder(
-            padding: const EdgeInsets.all(10),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: crossAxisCount,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: aspectRatio,
-            ),
-            itemCount: postsList.length,
-            itemBuilder: (context, index) {
+        const SliverToBoxAdapter(child: SizedBox(height: 10)),
+
+        // GridView to display posts in a responsive grid
+        SliverGrid(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
               return PostItemWidget(post: postsList[index]);
             },
+            childCount: postsList.length,
+          ),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            childAspectRatio: aspectRatio,
           ),
         ),
       ],

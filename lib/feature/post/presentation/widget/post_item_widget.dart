@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:post_app/feature/post/domain/entities/post_entity.dart';
+
+import '../bloc/post_cubit.dart';
 
 class PostItemWidget extends StatelessWidget {
   final PostEntity post;
@@ -21,8 +24,14 @@ class PostItemWidget extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.centerRight,
-              child:
-                  IconButton(onPressed: () {}, icon: Icon(Icons.star_outline)),
+              child: IconButton(
+                  onPressed: () {
+                    context.read<PostCubit>().togglePostSavedStatus(post.id!);
+                  },
+                  icon: Icon(
+                    post.isSaved ? Icons.star : Icons.star_outline,
+                    color: post.isSaved ? Colors.amber : Colors.grey,
+                  )),
             ),
             Text(
               post.title ?? "",
@@ -43,8 +52,8 @@ class PostItemWidget extends StatelessWidget {
               child: TextButton(
                 onPressed: () {},
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.white, // Text color
-                  backgroundColor: Colors.black, // Button background color
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),

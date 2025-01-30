@@ -14,12 +14,17 @@ class PostPage extends StatelessWidget {
     return Scaffold(
         backgroundColor: MaterialColors.backgroundColor,
         body: BlocProvider(
-            create: (context) => PostCubit(getIt())..getPosts(),
+            create: (context) =>
+                PostCubit(getIt(), getIt(), getIt(), getIt(), getIt())
+                  ..fetchPosts(),
             child: BlocBuilder<PostCubit, PostState>(builder: (context, state) {
               if (state is LoadingState) {
                 return Center(child: CircularProgressIndicator());
               } else if (state is SuccessState) {
-                return PostWidgets(postsList: state.posts);
+                return PostWidgets(
+                  postsList: state.posts,
+                  favoriteList: state.favoriteList,
+                );
               } else if (state is ErrorState) {
                 return Center(child: Text("Error: $state"));
               }

@@ -7,19 +7,19 @@ import '../repository/post_by_id_repository.dart';
 
 class GetCommentsUseCase
     implements
-        Usecase<Either<DioException, List<CommentEntity>>, PostDetailParams> {
+        Usecase<Either<DioException, List<CommentEntity>>, CommentParams> {
   final PostDetailRepository repository;
 
   GetCommentsUseCase(this.repository);
 
   @override
   Future<Either<DioException, List<CommentEntity>>> call(
-      {PostDetailParams? params}) {
+      {CommentParams? params}) {
     return repository.fetchCommentsByPostId(postId: params!.postId);
   }
 }
 
-class PostDetailParams {
+class CommentParams {
   final int postId;
-  PostDetailParams(this.postId);
+  CommentParams(this.postId);
 }

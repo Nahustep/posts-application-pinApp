@@ -1,4 +1,4 @@
-import '../../domain/entities/post_entity.dart';
+import '../entities/post_entity.dart';
 
 class PostModel extends PostEntity {
   const PostModel({super.body, super.id, super.title});

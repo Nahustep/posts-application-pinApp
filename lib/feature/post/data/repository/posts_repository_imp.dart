@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:post_app/feature/post/data/data_sources/post_api_services.dart';
-import '../../domain/entities/post_entity.dart';
+import '../../../../core/entities/post_entity.dart';
 import '../../domain/repository/posts_repository.dart';
-import '../data_sources/local/post_api_services.dart';
+import '../../../../core/data_sources/local/post_api_services.dart';
 
 class PostsRepositoryImpl implements PostsRepository {
   final PostApiServices postApiServices;

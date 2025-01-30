@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:post_app/feature/post/domain/entities/post_entity.dart';
+import 'package:post_app/core/entities/post_entity.dart';
 
 abstract class PostsRepository {
   Future<Either<DioException, List<PostEntity>>> fetchPosts();

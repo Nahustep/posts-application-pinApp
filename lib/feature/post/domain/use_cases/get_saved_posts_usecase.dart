@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../core/usecases/usecase.dart';
-import '../entities/post_entity.dart';
+import '../../../../core/entities/post_entity.dart';
 import '../repository/posts_repository.dart';
 
 class GetSavedPostsUseCase

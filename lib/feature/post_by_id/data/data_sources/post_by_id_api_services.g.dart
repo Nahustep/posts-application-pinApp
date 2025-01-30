@@ -18,12 +18,12 @@ class _PostDetailApiServices implements PostDetailApiServices {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<CommentModel>> getPostById({required String id}) async {
+  Future<HttpResponse<PostModel>> getPostById({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<CommentModel>>(
+    final _options = _setStreamType<HttpResponse<PostModel>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -34,9 +34,9 @@ class _PostDetailApiServices implements PostDetailApiServices {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CommentModel _value;
+    late PostModel _value;
     try {
-      _value = CommentModel.fromJson(_result.data!);
+      _value = PostModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

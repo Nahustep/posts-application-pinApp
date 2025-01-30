@@ -4,7 +4,7 @@ import 'package:post_app/feature/post/domain/use_cases/is_saved_post_usecase.dar
 import 'package:post_app/feature/post/domain/use_cases/remove_post_usecase.dart';
 import 'package:post_app/feature/post/domain/use_cases/save_post_usecase.dart';
 
-import '../../domain/entities/post_entity.dart';
+import '../../../../core/entities/post_entity.dart';
 import '../../domain/use_cases/get_posts_usecase.dart';
 import '../../domain/use_cases/get_saved_posts_usecase.dart';
 

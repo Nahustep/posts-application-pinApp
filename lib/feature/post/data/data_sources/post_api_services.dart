@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../models/post_model.dart';
+import '../../../../core/models/post_model.dart';
 part 'post_api_services.g.dart';
 
 @RestApi()

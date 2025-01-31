@@ -23,31 +23,62 @@ class UserDetailWidget extends StatelessWidget {
           child: Icon(Icons.person, color: Colors.white),
         ),
         const SizedBox(width: 20),
-        ResponsiveRowColumn(
-          layout: ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
-              ? ResponsiveRowColumnType.COLUMN
-              : ResponsiveRowColumnType.ROW,
-          rowMainAxisAlignment: MainAxisAlignment.start,
-          columnCrossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ResponsiveRowColumnItem(
-                child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.5,
-              child: Text(
-                "$name ",
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontWeight: FontWeight.bold),
+        Expanded(
+          // Ensure ResponsiveRowColumn can take full width
+          child: ResponsiveRowColumn(
+            layout: ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
+                ? ResponsiveRowColumnType.COLUMN
+                : ResponsiveRowColumnType.ROW,
+            rowMainAxisAlignment: MainAxisAlignment.start,
+            columnCrossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ResponsiveRowColumnItem(
+                child: Text(
+                  "$name",
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
-            )),
-            ResponsiveRowColumnItem(
-              child: Text(
-                email,
-                style: const TextStyle(color: Colors.grey),
+              ResponsiveRowColumnItem(
+                child: Text(
+                  email,
+                  style: const TextStyle(color: Colors.grey),
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        )
+        // ResponsiveRowColumn(
+        //   layout: ResponsiveBreakpoints.of(context).smallerThan(DESKTOP)
+        //       ? ResponsiveRowColumnType.COLUMN
+        //       : ResponsiveRowColumnType.ROW,
+        //   rowMainAxisAlignment: MainAxisAlignment.start,
+        //   columnCrossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+        //     // ResponsiveRowColumnItem(
+        //     //   child: LayoutBuilder(
+        //     //     builder: (context, constraints) {
+        //     //       return SizedBox(
+        //     //         width: constraints.maxWidth,
+        //     //         child: Text(
+        //     //           "$name",
+        //     //           maxLines: 2,
+        //     //           overflow: TextOverflow.ellipsis,
+        //     //           style: const TextStyle(fontWeight: FontWeight.bold),
+        //     //         ),
+        //     //       );
+        //     //     },
+        //     //   ),
+        //     // ),
+        //     ResponsiveRowColumnItem(
+        //       child: Text(
+        //         email,
+        //         style: const TextStyle(color: Colors.grey),
+        //       ),
+        //     ),
+        //   ],
+        // ),
       ],
     );
   }

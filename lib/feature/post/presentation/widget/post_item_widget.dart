@@ -51,7 +51,7 @@ class PostItemWidget extends StatelessWidget {
               UserDetailWidget(
                 name: "jhon doe",
                 email: "jhondoe@email.com",
-                isComment: true,
+                isComment: false,
               ),
               const SizedBox(height: 20),
               Text(

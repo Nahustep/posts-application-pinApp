@@ -1,16 +1,43 @@
-# post_app
+# 📱 Post App
 
-A new Flutter project.
+Post App es una aplicación Flutter que permite visualizar una lista de posts, marcar posts como favoritos usando `SharedPreferences`, eliminarlos y ver los detalles de cada post.
 
-## Getting Started
+## 🚀 Características
+- 📌 **Lista de posts** obtenidos desde una API.
+- ⭐ **Guardar posts como favoritos** con `SharedPreferences`.
+- ❌ **Eliminar posts** de la lista de favoritos.
+- 🔍 **Ver detalles de un post** con más información.
 
-This project is a starting point for a Flutter application.
+## 🎥 Video Demostración
 
-A few resources to get you started if this is your first Flutter project:
+El video está disponible en la carpeta de recursos:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+[Ver video](assets/videos/demo.mp4)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tecnologías Utilizadas
+- **Flutter** (3.27.0) - Framework principal.
+- **Dart** (3.6.0) - Lenguaje de programación.
+- **Retrofit & Dio** - Cliente HTTP para consumir la API.
+- **Bloc & Flutter Bloc** - Gestión del estado.
+- **GoRouter** - Navegación declarativa.
+- **SharedPreferences** - Almacenamiento local de favoritos.
+- **Get It** - Inyección de dependencias.
+- **Responsive Framework** - Diseño adaptable.
+
+## 📱 Plataformas Probadas
+La aplicación ha sido testeada en:
+- ✅ **Web** (Chrome)
+- ✅ **Android** (Emuladores)
+
+No ha sido probada en iOS o Windows. ⚠️
+## 📥 Instalación
+1. Cloná este repositorio:
+   ```bash
+   git clone https://github.com/tu_usuario/post_app.git
+   cd post_app
+2. Instalá las dependencias:
+   ```bash
+   flutter pub get
+3. Ejecutá la aplicación:
+   ```bash
+   flutter run

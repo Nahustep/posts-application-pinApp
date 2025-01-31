@@ -12,7 +12,7 @@ Post App es una aplicación Flutter que permite visualizar una lista de posts, m
 
 El video está disponible en la carpeta de recursos:
 
-[Ver video](assets/videos/demo.mp4)
+[Ver video](assets/videos/Demo.mp4)
 
 ## 🛠️ Tecnologías Utilizadas
 - **Flutter** (3.27.0) - Framework principal.
@@ -30,6 +30,7 @@ La aplicación ha sido testeada en:
 - ✅ **Android** (Emuladores)
 
 No ha sido probada en iOS o Windows. ⚠️
+
 ## 📥 Instalación
 1. Cloná este repositorio:
    ```bash

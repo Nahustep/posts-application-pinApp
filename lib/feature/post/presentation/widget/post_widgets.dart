@@ -67,22 +67,25 @@ class PostWidgets extends StatelessWidget {
           ),
         ),
         const SliverToBoxAdapter(child: SizedBox(height: 10)),
-        SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            sliver: SliverGrid(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return PostItemWidget(post: postsList[index]);
-                },
-                childCount: postsList.length,
-              ),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: crossAxisCount,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: aspectRatio,
-              ),
-            )),
+        postsList.isNotEmpty
+            ? SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                sliver: SliverGrid(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return PostItemWidget(post: postsList[index]);
+                    },
+                    childCount: postsList.length,
+                  ),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    childAspectRatio: aspectRatio,
+                  ),
+                ))
+            : SliverToBoxAdapter(
+                child: Center(child: Text("No tienes posts guardados"))),
       ],
     );
   }

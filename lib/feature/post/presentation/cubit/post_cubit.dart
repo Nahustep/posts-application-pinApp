@@ -94,7 +94,7 @@ class PostCubit extends Cubit<PostState> {
     //TODO:ACA MEJORARIA LA VALIDACION DE ERRORES AGREGANDOLE CODE O ALGUN IDENTIFICADOR PARA MOSTRAR DIFERENTES MENSAJES SEGUN EL CODIGO
 
     if (error is DioException) {
-      emit(ErrorState(error.message ?? "Ocurrio un error."));
+      emit(ErrorState("Ocurrio un error."));
     } else {
       emit(ErrorState(error.toString()));
     }

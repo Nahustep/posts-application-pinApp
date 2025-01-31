@@ -24,7 +24,7 @@ class PostPage extends StatelessWidget {
                   favoriteList: state.favoriteList,
                 );
               } else if (state is ErrorState) {
-                return Center(child: Text("Error: $state"));
+                return Center(child: Text("Error: ${state.error}"));
               }
               return Center(child: Text("No data"));
             })));

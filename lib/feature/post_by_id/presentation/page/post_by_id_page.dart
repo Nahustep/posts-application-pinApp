@@ -27,7 +27,7 @@ class PostDetailPage extends StatelessWidget {
                   comments: state.comments,
                 );
               } else if (state is ErrorState) {
-                return Center(child: Text("Error: $state"));
+                return Center(child: Text("Error: ${state.error}"));
               }
               return Center(child: Text("No data"));
             })));

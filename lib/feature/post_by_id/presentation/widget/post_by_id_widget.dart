@@ -59,13 +59,8 @@ class PostDetailWidget extends StatelessWidget {
             const SizedBox(height: 15),
             Column(
               children: comments
-                  .map((x) => Column(
-                        children: [
-                          CommentWidget(
-                            comment: x,
-                          ),
-                          Divider()
-                        ],
+                  .map((x) => CommentWidget(
+                        comment: x,
                       ))
                   .toList(),
             )

@@ -63,4 +63,34 @@ class PostDetailRepositoryImpl implements PostDetailRepository {
       return left(e);
     }
   }
+
+  @override
+  Future<Either<Error, void>> savePost({required int postId}) async {
+    try {
+      await localPostApiServices.savePost(postId);
+      return Right(null);
+    } catch (e) {
+      return Left(Error());
+    }
+  }
+
+  @override
+  Future<Either<Error, void>> removePost({required int postId}) async {
+    try {
+      await localPostApiServices.removePost(postId);
+      return Right(null);
+    } catch (e) {
+      return Left(Error());
+    }
+  }
+
+  @override
+  Future<Either<Error, bool>> isSavedPost({required int postId}) async {
+    try {
+      final isSaved = localPostApiServices.isPostSaved(postId);
+      return Right(isSaved);
+    } catch (e) {
+      return Left(Error());
+    }
+  }
 }

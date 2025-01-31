@@ -13,10 +13,8 @@ class PostPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: MaterialColors.backgroundColor,
-        body: BlocProvider(
-            create: (context) =>
-                PostCubit(getIt(), getIt(), getIt(), getIt(), getIt())
-                  ..fetchPosts(),
+        body: BlocProvider.value(
+            value: getIt<PostCubit>()..fetchPosts(),
             child: BlocBuilder<PostCubit, PostState>(builder: (context, state) {
               if (state is LoadingState) {
                 return Center(child: CircularProgressIndicator());

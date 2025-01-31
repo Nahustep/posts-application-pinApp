@@ -15,9 +15,8 @@ class PostDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: MaterialColors.backgroundColor,
-        body: BlocProvider(
-            create: (context) =>
-                PostDetailCubit(getIt(), getIt())..fetchPost(id),
+        body: BlocProvider.value(
+            value: getIt<PostDetailCubit>()..fetchPost(id),
             child: BlocBuilder<PostDetailCubit, PostDetailState>(
                 builder: (context, state) {
               if (state is LoadingState) {

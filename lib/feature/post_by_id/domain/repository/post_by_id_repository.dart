@@ -8,4 +8,9 @@ abstract class PostDetailRepository {
 
   Future<Either<DioException, List<CommentEntity>>> fetchCommentsByPostId(
       {required int postId});
+  Future<Either<Error, void>> savePost({required int postId});
+
+  Future<Either<Error, void>> removePost({required int postId});
+
+  Future<Either<Error, bool>> isSavedPost({required int postId});
 }

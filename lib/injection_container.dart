@@ -19,6 +19,7 @@ import 'feature/post_by_id/data/repository/post_by_id_repository_imp.dart';
 import 'feature/post_by_id/domain/repository/post_by_id_repository.dart';
 import 'feature/post_by_id/domain/use_cases/get_comments_usecase.dart';
 import 'feature/post_by_id/domain/use_cases/get_post_by_id_usecase.dart';
+import 'feature/post_by_id/presentation/cubit/post_by_id_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -57,4 +58,6 @@ Future<void> initializeDependencies() async {
   // CUBIT
   getIt.registerFactory<PostCubit>(
       () => PostCubit(getIt(), getIt(), getIt(), getIt(), getIt()));
+  getIt.registerFactory<PostDetailCubit>(
+      () => PostDetailCubit(getIt(), getIt(), getIt(), getIt(), getIt()));
 }

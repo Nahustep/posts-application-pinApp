@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:post_app/feature/post/domain/use_cases/is_saved_post_usecase.dart';
+import 'package:post_app/feature/post/domain/use_cases/remove_post_usecase.dart';
+import 'package:post_app/feature/post/domain/use_cases/save_post_usecase.dart';
 import 'package:post_app/feature/post_by_id/domain/use_cases/get_comments_usecase.dart';
 
 import '../../../../core/entities/post_entity.dart';
@@ -13,10 +16,12 @@ class PostDetailCubit extends Cubit<PostDetailState> {
   final GetPostDetailUseCase _getPostDetailUseCase;
   final GetCommentsUseCase _getCommentsUseCase;
 
-  PostDetailCubit(
-    this._getPostDetailUseCase,
-    this._getCommentsUseCase,
-  ) : super(InitialState());
+  final SavePostUseCase _savePostUseCase;
+  final IsSavedPostUseCase _isSavedPostUseCase;
+  final RemovePostUseCase _removePostUseCase;
+  PostDetailCubit(this._getPostDetailUseCase, this._getCommentsUseCase,
+      this._savePostUseCase, this._isSavedPostUseCase, this._removePostUseCase)
+      : super(InitialState());
 
   Future<void> fetchPost(String id) async {
     emit(LoadingState());
@@ -44,6 +49,31 @@ class PostDetailCubit extends Cubit<PostDetailState> {
         );
       },
     );
+  }
+
+  Future<void> togglePostSavedStatus(int postId) async {
+    final currentState = state;
+    if (currentState is SuccessState) {
+      final result =
+          await _isSavedPostUseCase.call(params: SavedPostParams(postId));
+
+      result.fold(
+        (error) => handleError(error),
+        (isSaved) async => await updateSavedPostStatus(
+            isSaved, postId, currentState.post, currentState.comments),
+      );
+    }
+  }
+
+  Future<void> updateSavedPostStatus(bool isSaved, int postId, PostEntity post,
+      List<CommentEntity> comments) async {
+    if (isSaved) {
+      await _removePostUseCase.call(params: RemovePostParams(postId));
+    } else {
+      await _savePostUseCase.call(params: SavePostParams(postId));
+    }
+
+    emit(SuccessState(post.copyWith(isSaved: !isSaved), comments));
   }
 
   void handleError(dynamic error) {

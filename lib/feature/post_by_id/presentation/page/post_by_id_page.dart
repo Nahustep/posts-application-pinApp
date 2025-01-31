@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:post_app/ui/colors.dart';
 
-import '../../../../injection_container.dart';
+import '../../../../../injection_container.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'cubit/post_by_id_cubit.dart';
+import '../cubit/post_by_id_cubit.dart';
+import '../widget/post_by_id_widget.dart';
 
 class PostDetailPage extends StatelessWidget {
   final String id;
@@ -22,10 +23,10 @@ class PostDetailPage extends StatelessWidget {
               if (state is LoadingState) {
                 return Center(child: CircularProgressIndicator());
               } else if (state is SuccessState) {
-                // return PostWidgets(
-                //   postsList: state.posts,
-                //   favoriteList: state.favoriteList,
-                // );
+                return PostDetailWidget(
+                  post: state.post,
+                  comments: state.comments,
+                );
               } else if (state is ErrorState) {
                 return Center(child: Text("Error: $state"));
               }

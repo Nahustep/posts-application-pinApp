@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:post_app/feature/post/presentation/bloc/post_cubit.dart';
+import 'package:post_app/feature/post/presentation/cubit/post_cubit.dart';
 import 'package:post_app/ui/colors.dart';
 
 import '../../../../injection_container.dart';

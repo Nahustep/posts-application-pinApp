@@ -29,8 +29,9 @@ class PostDetailCubit extends Cubit<PostDetailState> {
       _getCommentsUseCase.call(params: CommentParams(idNumber)),
     ]);
 
-    final postResult = results[0] as Either<Error, PostEntity>;
-    final commentResult = results[1] as Either<Error, List<CommentEntity>>;
+    final postResult = results[0] as Either<DioException, PostEntity>;
+    final commentResult =
+        results[1] as Either<DioException, List<CommentEntity>>;
 
     postResult.fold(
       (error) => handleError(error),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:post_app/core/entities/post_entity.dart';
 
-import '../bloc/post_cubit.dart';
+import '../cubit/post_cubit.dart';
 
 class PostItemWidget extends StatelessWidget {
   final PostEntity post;

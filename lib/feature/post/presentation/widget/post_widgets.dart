@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:post_app/core/entities/post_entity.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import '../bloc/post_cubit.dart';
+import '../cubit/post_cubit.dart';
 import 'post_item_widget.dart';
 
 class PostWidgets extends StatelessWidget {

@@ -5,7 +5,7 @@ import 'package:post_app/feature/post/domain/use_cases/get_posts_usecase.dart';
 import 'package:post_app/feature/post/domain/use_cases/is_saved_post_usecase.dart';
 import 'package:post_app/feature/post/domain/use_cases/remove_post_usecase.dart';
 import 'package:post_app/feature/post/domain/use_cases/save_post_usecase.dart';
-import 'package:post_app/feature/post/presentation/bloc/post_cubit.dart';
+import 'package:post_app/feature/post/presentation/cubit/post_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/constants/constants.dart';

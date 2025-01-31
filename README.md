@@ -12,7 +12,7 @@ Post App es una aplicación Flutter que permite visualizar una lista de posts, m
 
 El video está disponible en la carpeta de recursos y en Google Drive:
 
-[Ver video Local](assets/videos/Demo.mp4)
+- [Ver video Local](assets/videos/Demo.mp4)
 - [Ver video en Google Drive](https://drive.google.com/file/d/11IJ7lfnrqjppGQ4AOKTrHfDmsr-r7vRL/view?usp=sharing)
 
 ## 🛠️ Tecnologías Utilizadas
@@ -36,7 +36,7 @@ No ha sido probada en iOS o Windows. ⚠️
 1. Cloná este repositorio:
    ```bash
    git clone https://github.com/Nahustep/posts-application-pinApp.git
-   cd post_app
+   cd posts-application-pinApp
 2. Instalá las dependencias:
    ```bash
    flutter pub get

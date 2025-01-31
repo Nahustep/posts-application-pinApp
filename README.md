@@ -33,7 +33,7 @@ No ha sido probada en iOS o Windows. ⚠️
 ## 📥 Instalación
 1. Cloná este repositorio:
    ```bash
-   git clone https://github.com/tu_usuario/post_app.git
+   git clone https://github.com/Nahustep/posts-application-pinApp.git
    cd post_app
 2. Instalá las dependencias:
    ```bash

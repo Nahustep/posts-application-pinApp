@@ -31,9 +31,14 @@ class UserDetailWidget extends StatelessWidget {
           columnCrossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ResponsiveRowColumnItem(
-                child: Text(
-              "$name ",
-              style: const TextStyle(fontWeight: FontWeight.bold),
+                child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: Text(
+                "$name ",
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
             )),
             ResponsiveRowColumnItem(
               child: Text(

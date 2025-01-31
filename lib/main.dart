@@ -5,6 +5,8 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'core/routes/routes.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await initializeDependencies();
   runApp(const MyApp());
 }

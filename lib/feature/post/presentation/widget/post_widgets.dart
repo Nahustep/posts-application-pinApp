@@ -26,7 +26,6 @@ class PostWidgets extends StatelessWidget {
             ? (ResponsiveBreakpoints.of(context).smallerThan(TABLET) ? 1 : 0.6)
             : 0.7)
         : 1;
-    print(aspectRatio);
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(

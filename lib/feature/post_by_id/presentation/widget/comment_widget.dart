@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:post_app/feature/post_by_id/domain/entities/comment_entity.dart';
-import 'package:responsive_framework/responsive_framework.dart';
-
 import 'social_widget.dart';
-import 'user_detail_widget.dart';
+import '../../../../core/widget/user_detail_widget.dart';
 
 class CommentWidget extends StatelessWidget {
   final CommentEntity comment;

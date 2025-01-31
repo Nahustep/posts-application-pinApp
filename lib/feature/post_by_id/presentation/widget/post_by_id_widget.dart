@@ -8,7 +8,7 @@ import '../../domain/entities/comment_entity.dart';
 import '../cubit/post_by_id_cubit.dart';
 import 'comment_widget.dart';
 import 'social_widget.dart';
-import 'user_detail_widget.dart';
+import '../../../../core/widget/user_detail_widget.dart';
 
 class PostDetailWidget extends StatelessWidget {
   final PostEntity post;
